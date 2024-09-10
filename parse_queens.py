@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 with open('queens.html','r') as f:
-    f=f.readlines()
-f = f[0]
+    f=f.read()
 
 import numpy as np
-grid = np.array([int(s.split('-',1)[0])for s in f.split('cell-color-')[1:]])
+grid = [s for s in f.split('cell-color-')[1:]]
+print([s[:10] for s in grid])
+grid = np.array([int(s.split('-',1)[0]) for s in grid])
 width = int(np.sqrt(len(grid)))
 grid = grid.reshape(width,width)
 with open('grid.lp','w') as f:
